@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = MarkupModel::VERSION
   gem.authors       = ["Brian Alexander"]
   gem.email         = ["balexand@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Under construction}
+  gem.summary       = %q{Under construction}
+  gem.homepage      = "https://github.com/balexand/markup_model"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
