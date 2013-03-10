@@ -3,7 +3,10 @@ require "markup_model/config"
 require "markup_model/model_file"
 require "markup_model/version"
 
-require "markup_model/engine" if defined?(Rails)
+if defined?(Rails)
+  require "markup_model/engine"
+  require "markup_model/generators/model_generator"
+end
 
 module MarkupModel
   extend ActiveSupport::Concern

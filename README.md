@@ -1,24 +1,43 @@
 # MarkupModel
 
-TODO: Write a gem description
+Loads ActiveModel records from Markdown files (with YAML headers). This allows you to keep records in your git repository then load them into your DB for querying as a deploy task.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile and run `bundle install`:
 
     gem 'markup_model'
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install markup_model
-
 ## Usage
 
-TODO: Write usage instructions here
+Create a model like this:
+
+```ruby
+class Post < ActiveRecord::Base
+  include MarkupModel
+
+  validates :content, :published_at, :title, presence: true
+
+  def self.default_yaml_header
+    {
+      published_at: Time.zone.now,
+      title: "New Post",
+    }
+  end
+end
+```
+
+Then generate a Markdown file for the model by running:
+
+```
+rails g markup_model:model Post
+```
+
+After you finish editing the file, update the records in your DB:
+
+```
+rake markup_model:reload CLASS=Post
+```
 
 ## Contributing
 
