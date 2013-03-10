@@ -39,6 +39,21 @@ After you finish editing the file, update the records in your DB:
 rake markup_model:reload CLASS=Post
 ```
 
+## Development mode
+
+When in development mode, you probably want your markup models to be reloaded with each page reload. Try something like this:
+
+```ruby
+class PostsController < ApplicationController
+  before_action :markup_model_reload if Rails.env.development?
+
+private
+  def markup_model_reload
+    Post.markup_model_reload
+  end
+end
+```
+
 ## Contributing
 
 1. Fork it
